@@ -20,16 +20,16 @@ const createColumns = (num: number) => {
 
 const App = () => {
   return (
-    <div style={{ width: "100%", height: "100%", background: "#eeeeee" }}>
+    <div style={{ width: "100vw", height: "100vh", background: "#eeeeee" }}>
       <div style={{ padding: 10, direction: "ltr" }}>
         <div>ltr</div>
-        <VList style={{ width: "100%", height: 200 }} horizontal>
+        <VList style={{ width: 800, height: 200 }} horizontal>
           {createColumns(1000)}
         </VList>
       </div>
       <div style={{ padding: 10, direction: "rtl" }}>
         <div>rtl</div>
-        <VList style={{ width: "100%", height: 200 }} horizontal rtl>
+        <VList style={{ width: 800, height: 200 }} horizontal rtl>
           {createColumns(1000)}
         </VList>
       </div>
