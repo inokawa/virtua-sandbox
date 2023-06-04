@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { VList, VListHandle } from "./lib";
+import { VList, VListHandle } from "virtua";
 import { useRef } from "react";
 
 const createRows = (num: number) => {
