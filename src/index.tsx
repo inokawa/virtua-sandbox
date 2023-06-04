@@ -32,9 +32,16 @@ const App = () => {
         <VList style={{ width: "100%", height: 200 }} horizontal rtl>
           {createColumns(1000)}
         </VList>
-      </div>{" "}
+      </div>
     </div>
   );
 };
 
-createRoot(document.getElementById("root") as HTMLElement).render(<App />);
+(async () => {
+  if (typeof ResizeObserver === "undefined") {
+    window.ResizeObserver = (
+      await import("@juggle/resize-observer")
+    ).ResizeObserver;
+  }
+  createRoot(document.getElementById("root")!).render(<App />);
+})();
