@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { VList, VListHandle } from "virtua";
+import { VList, VListHandle, VGrid } from "virtua";
 import { useRef } from "react";
 
 const createRows = (num: number) => {
@@ -64,15 +64,32 @@ const App = () => {
           {createRows(length)}
         </VList>
       </div>
-      <div style={{ padding: 10, direction: "ltr" }}>
-        <VList ref={ref2} style={{ width: 600, height: 200 }} horizontal>
-          {createColumns(length)}
-        </VList>
+      <div style={{ display: "flex" }}>
+        <div style={{ padding: 10, direction: "ltr" }}>
+          <VList ref={ref2} style={{ width: 600, height: 200 }} horizontal>
+            {createColumns(length)}
+          </VList>
+        </div>
+        <div style={{ padding: 10, direction: "rtl" }}>
+          <VList ref={ref3} style={{ width: 600, height: 200 }} horizontal rtl>
+            {createColumns(length)}
+          </VList>
+        </div>
       </div>
-      <div style={{ padding: 10, direction: "rtl" }}>
-        <VList ref={ref3} style={{ width: 600, height: 200 }} horizontal rtl>
-          {createColumns(length)}
-        </VList>
+      <div style={{ padding: 10 }}>
+        <VGrid style={{ height: 200 }} row={1000} col={500}>
+          {({ rowIndex, colIndex }) => (
+            <div
+              style={{
+                width: ((colIndex % 3) + 1) * 100,
+                border: "solid 1px gray",
+                background: "white",
+              }}
+            >
+              {rowIndex} / {colIndex}
+            </div>
+          )}
+        </VGrid>
       </div>
     </div>
   );
