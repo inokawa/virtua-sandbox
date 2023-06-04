@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
-import { VList } from "./lib";
+import { VList, VListHandle } from "./lib";
+import { useRef } from "react";
 
 const createRows = (num: number) => {
   const heights = [20, 40, 80, 77];
@@ -37,19 +38,40 @@ const createColumns = (num: number) => {
 };
 
 const App = () => {
+  const ref = useRef<VListHandle>(null);
+  const ref2 = useRef<VListHandle>(null);
+  const ref3 = useRef<VListHandle>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const length = 1000;
+
   return (
     <div style={{ width: "100vw", height: "100vh", background: "#eeeeee" }}>
+      <div>
+        <input ref={inputRef} type="number" defaultValue={0} />
+        <button
+          onClick={() => {
+            const i = inputRef.current?.valueAsNumber ?? 0;
+            ref.current?.scrollToIndex(i);
+            ref2.current?.scrollToIndex(i);
+            ref3.current?.scrollToIndex(i);
+          }}
+        >
+          scroll to index
+        </button>
+      </div>
       <div style={{ padding: 10 }}>
-        <VList style={{ height: 200 }}>{createRows(1000)}</VList>
+        <VList ref={ref} style={{ height: 200 }}>
+          {createRows(length)}
+        </VList>
       </div>
       <div style={{ padding: 10, direction: "ltr" }}>
-        <VList style={{ width: 800, height: 200 }} horizontal>
-          {createColumns(1000)}
+        <VList ref={ref2} style={{ width: 600, height: 200 }} horizontal>
+          {createColumns(length)}
         </VList>
       </div>
       <div style={{ padding: 10, direction: "rtl" }}>
-        <VList style={{ width: 800, height: 200 }} horizontal rtl>
-          {createColumns(1000)}
+        <VList ref={ref3} style={{ width: 600, height: 200 }} horizontal rtl>
+          {createColumns(length)}
         </VList>
       </div>
     </div>
