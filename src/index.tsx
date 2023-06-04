@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { VList } from "virtua";
+import { VList } from "./lib";
 
 const createRows = (num: number) => {
   const heights = [20, 40, 80, 77];
