@@ -1,6 +1,24 @@
 import { createRoot } from "react-dom/client";
 import { VList } from "virtua";
 
+const createRows = (num: number) => {
+  const heights = [20, 40, 80, 77];
+  return Array.from({ length: num }).map((_, i) => {
+    return (
+      <div
+        key={i}
+        style={{
+          height: heights[i % 4],
+          borderBottom: "solid 1px #ccc",
+          background: "#fff",
+        }}
+      >
+        {i}
+      </div>
+    );
+  });
+};
+
 const createColumns = (num: number) => {
   return Array.from({ length: num }).map((_, i) => {
     return (
@@ -21,14 +39,15 @@ const createColumns = (num: number) => {
 const App = () => {
   return (
     <div style={{ width: "100vw", height: "100vh", background: "#eeeeee" }}>
+      <div style={{ padding: 10 }}>
+        <VList style={{ height: 200 }}>{createRows(1000)}</VList>
+      </div>
       <div style={{ padding: 10, direction: "ltr" }}>
-        <div>ltr</div>
         <VList style={{ width: 800, height: 200 }} horizontal>
           {createColumns(1000)}
         </VList>
       </div>
       <div style={{ padding: 10, direction: "rtl" }}>
-        <div>rtl</div>
         <VList style={{ width: 800, height: 200 }} horizontal rtl>
           {createColumns(1000)}
         </VList>
