@@ -71,7 +71,12 @@ const App = () => {
           </VList>
         </div>
         <div style={{ padding: 10, direction: "rtl" }}>
-          <VList ref={ref3} style={{ width: 600, height: 200 }} horizontal rtl>
+          <VList
+            ref={ref3}
+            style={{ width: 600, height: 200 }}
+            horizontal
+            mode="rtl"
+          >
             {createColumns(length)}
           </VList>
         </div>
