@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { VList, VListHandle, VGrid } from "virtua";
+import { VList, VListHandle, VGrid, VGridHandle } from "virtua";
 import { useRef } from "react";
 
 const createRows = (num: number) => {
@@ -41,6 +41,7 @@ const App = () => {
   const ref = useRef<VListHandle>(null);
   const ref2 = useRef<VListHandle>(null);
   const ref3 = useRef<VListHandle>(null);
+  const ref4 = useRef<VGridHandle>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const length = 1000;
 
@@ -54,6 +55,7 @@ const App = () => {
             ref.current?.scrollToIndex(i);
             ref2.current?.scrollToIndex(i);
             ref3.current?.scrollToIndex(i);
+            ref4.current?.scrollToIndex(i, i);
           }}
         >
           scroll to index
@@ -82,7 +84,7 @@ const App = () => {
         </div>
       </div>
       <div style={{ padding: 10 }}>
-        <VGrid style={{ height: 200 }} row={1000} col={500}>
+        <VGrid ref={ref4} style={{ height: 200 }} row={1000} col={500}>
           {({ rowIndex, colIndex }) => (
             <div
               style={{
