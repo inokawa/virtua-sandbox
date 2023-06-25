@@ -22,8 +22,7 @@
     "noFallthroughCasesInSwitch": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    // "exactOptionalPropertyTypes": true,
-    "typeRoots": ["./node_modules/@webgpu/types"]
+    // "exactOptionalPropertyTypes": true
   },
   "include": ["src"],
   "exclude": ["node_modules"]
