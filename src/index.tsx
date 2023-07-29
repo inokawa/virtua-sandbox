@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { VList, VListHandle, VGrid, VGridHandle } from "virtua";
+import { VList, VListHandle, VGrid, VGridHandle, WVList } from "virtua";
 import { useRef } from "react";
 
 const createRows = (num: number) => {
@@ -46,7 +46,7 @@ const App = () => {
   const length = 1000;
 
   return (
-    <div style={{ width: "100vw", height: "100vh", background: "#eeeeee" }}>
+    <div>
       <div>
         <input ref={inputRef} type="number" defaultValue={0} />
         <button
@@ -97,6 +97,9 @@ const App = () => {
             </div>
           )}
         </VGrid>
+      </div>
+      <div style={{ padding: 20 }}>
+        <WVList>{createRows(1000)}</WVList>
       </div>
     </div>
   );
