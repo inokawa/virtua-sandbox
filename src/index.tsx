@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { VList, VListHandle, VGrid, VGridHandle, WVList } from "virtua";
+import { VList, VListHandle, VGrid, VGridHandle, WVList } from "./lib";
 import { useEffect, useRef } from "react";
 
 const createRows = (num: number) => {
@@ -70,26 +70,14 @@ const App = () => {
         <VList ref={ref} style={{ height: 200 }}>
           {createRows(length)}
         </VList>
-        <VList ref={refRev} style={{ height: 200 }} mode="reverse">
+        <VList ref={refRev} style={{ height: 200 }} reverse>
           {createRows(length)}
         </VList>
       </div>
-      <div style={{ display: "flex" }}>
-        <div style={{ padding: 10, direction: "ltr" }}>
-          <VList ref={ref2} style={{ width: 600, height: 200 }} horizontal>
-            {createColumns(length)}
-          </VList>
-        </div>
-        <div style={{ padding: 10, direction: "rtl" }}>
-          <VList
-            ref={ref3}
-            style={{ width: 600, height: 200 }}
-            horizontal
-            mode="rtl"
-          >
-            {createColumns(length)}
-          </VList>
-        </div>
+      <div style={{ display: "flex", padding: 10 }}>
+        <VList ref={ref2} style={{ height: 200 }} horizontal>
+          {createColumns(length)}
+        </VList>
       </div>
       <div style={{ padding: 10 }}>
         <VGrid ref={ref4} style={{ height: 200 }} row={1000} col={500}>
