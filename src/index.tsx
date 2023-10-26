@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import { VList, VListHandle, VGrid, VGridHandle, WVList } from "./lib";
-import { useEffect, useRef } from "react";
+import { VList, VListHandle, VGrid, VGridHandle, WVList } from "virtua";
+import { useEffect, useRef, useState } from "react";
 
 const createRows = (num: number) => {
   const heights = [20, 40, 80, 77];
@@ -50,6 +50,8 @@ const App = () => {
     refRev.current?.scrollToIndex(999);
   }, []);
 
+  const [hide, setHide] = useState(false);
+
   return (
     <div>
       <div>
@@ -65,8 +67,15 @@ const App = () => {
         >
           scroll to index
         </button>
+        <button
+          onClick={() => {
+            setHide((prev) => !prev);
+          }}
+        >
+          hide
+        </button>
       </div>
-      <div style={{ display: "flex", padding: 10 }}>
+      <div style={{ display: hide ? "none" : "flex", padding: 10 }}>
         <VList ref={ref} style={{ height: 200 }}>
           {createRows(length)}
         </VList>
