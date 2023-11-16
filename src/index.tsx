@@ -5,7 +5,7 @@ import {
   experimental_VGrid as VGrid,
   VGridHandle,
   WVList,
-} from "virtua";
+} from "./lib";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
