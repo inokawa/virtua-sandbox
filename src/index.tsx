@@ -1,13 +1,6 @@
 import { createRoot } from "react-dom/client";
-import {
-  VList,
-  VListHandle,
-  experimental_VGrid as VGrid,
-  VGridHandle,
-  WVList,
-} from "./lib";
+import { VList, VListHandle, experimental_VGrid as VGrid, VGridHandle, WVList } from "virtua";
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 
 const createRows = (num: number) => {
   const heights = [20, 40, 80, 77];
@@ -59,27 +52,8 @@ const App = () => {
 
   const [hide, setHide] = useState(false);
 
-  const [windowElement, setWindowElement] = useState<HTMLElement | null>(null);
-
   return (
     <div>
-      <div>
-        <button
-          onClick={() => {
-            const w = window.open("", "")!;
-            const el = document.createElement("div");
-            w.document.body.appendChild(el);
-            setWindowElement(el);
-          }}
-        >
-          new window
-        </button>
-      </div>
-      {windowElement &&
-        createPortal(
-          <VList style={{ height: 200 }}>{createRows(length)}</VList>,
-          windowElement
-        )}
       <div>
         <input ref={inputRef} type="number" defaultValue={0} />
         <button
