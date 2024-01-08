@@ -1,5 +1,11 @@
 import { createRoot } from "react-dom/client";
-import { VList, VListHandle, experimental_VGrid as VGrid, VGridHandle, WVList } from "virtua";
+import {
+  VList,
+  VListHandle,
+  experimental_VGrid as VGrid,
+  VGridHandle,
+  WindowVirtualizer,
+} from "virtua";
 import { useEffect, useRef, useState } from "react";
 
 const createRows = (num: number) => {
@@ -104,7 +110,7 @@ const App = () => {
         </VGrid>
       </div>
       <div style={{ padding: 20 }}>
-        <WVList>{createRows(1000)}</WVList>
+        <WindowVirtualizer>{createRows(1000)}</WindowVirtualizer>
       </div>
     </div>
   );
