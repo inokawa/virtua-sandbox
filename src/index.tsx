@@ -4,7 +4,7 @@ import {
   VListHandle,
   experimental_VGrid as VGrid,
   VGridHandle,
-  WindowVirtualizer,
+  WVList,
 } from "virtua";
 import { useEffect, useRef, useState } from "react";
 
@@ -110,7 +110,7 @@ const App = () => {
         </VGrid>
       </div>
       <div style={{ padding: 20 }}>
-        <WindowVirtualizer>{createRows(1000)}</WindowVirtualizer>
+        <WVList>{createRows(1000)}</WVList>
       </div>
     </div>
   );
