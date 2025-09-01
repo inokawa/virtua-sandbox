@@ -7,6 +7,7 @@ import {
   WindowVirtualizer,
 } from "virtua";
 import { useEffect, useRef, useState } from "react";
+import { createEditor, plainSchema } from "./lib";
 
 const createRows = (num: number) => {
   const heights = [20, 40, 80, 77];
@@ -43,6 +44,35 @@ const createColumns = (num: number) => {
   });
 };
 
+const Comp = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [value, setValue] = useState(
+    "Hello World.\nこんにちは。\n👍❤️🧑‍🧑‍🧒"
+  );
+  useEffect(() => {
+    if (!ref.current) return;
+    return createEditor({
+      doc: value,
+      schema: plainSchema({ multiline: true }),
+      onChange: setValue,
+    }).input(ref.current);
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        backgroundColor: "white",
+        padding: 8,
+      }}
+    >
+      {value.split("\n").map((r, i) => (
+        <div key={i}>{r ? r : <br />}</div>
+      ))}
+    </div>
+  );
+};
+
 const App = () => {
   const ref = useRef<VListHandle>(null);
   const refRev = useRef<VListHandle>(null);
@@ -60,6 +90,9 @@ const App = () => {
 
   return (
     <div>
+      <div>
+        <Comp />
+      </div>
       <div>
         <input ref={inputRef} type="number" defaultValue={0} />
         <button
