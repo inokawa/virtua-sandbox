@@ -5,7 +5,7 @@ import {
   experimental_VGrid as VGrid,
   VGridHandle,
   WindowVirtualizer,
-} from "virtua";
+} from "./lib";
 import { useEffect, useRef, useState } from "react";
 
 const createRows = (num: number) => {
